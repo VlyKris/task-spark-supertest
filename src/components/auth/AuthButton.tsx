@@ -46,7 +46,7 @@ const UnauthenticatedButton = ({ useModal, trigger }: AuthButtonProps) => {
       {useModal ? (
         <Dialog open={open} onOpenChange={handleOpenChange}>
           <DialogTrigger asChild>
-            {trigger || <Button>Get Started</Button>}
+            {trigger || <Button className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white border-0">Get Started</Button>}
           </DialogTrigger>
           <DialogContent className="bg-transparent border-none shadow-none">
             <DialogTitle></DialogTitle>
@@ -56,7 +56,7 @@ const UnauthenticatedButton = ({ useModal, trigger }: AuthButtonProps) => {
       ) : trigger ? (
         <div onClick={() => navigate("/auth")}>{trigger}</div>
       ) : (
-        <Button onClick={() => navigate("/auth")}>Get Started</Button>
+        <Button onClick={() => navigate("/auth")} className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white border-0">Get Started</Button>
       )}
     </div>
   );
@@ -71,7 +71,7 @@ export function AuthButton({
 
   if (isLoading) {
     return (
-      <Button disabled>
+      <Button disabled className="bg-green-600 text-white">
         <div className="flex items-center gap-2">
           <Loader2 className="h-4 w-4 animate-spin" />
           Loading...
@@ -88,7 +88,7 @@ export function AuthButton({
             {dashboardTrigger}
           </div>
         ) : (
-          <Button>
+          <Button className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white border-0">
             <Link to="/dashboard">Dashboard</Link>
           </Button>
         )}

@@ -11,9 +11,9 @@ export function TodoStats() {
     return (
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         {[1, 2, 3].map((i) => (
-          <Card key={i} className="animate-pulse">
+          <Card key={i} className="animate-pulse border-green-200 dark:border-green-800">
             <CardContent className="p-4">
-              <div className="h-16 bg-muted rounded" />
+              <div className="h-16 bg-green-100 dark:bg-green-900/30 rounded" />
             </CardContent>
           </Card>
         ))}
@@ -28,22 +28,25 @@ export function TodoStats() {
       icon: Target,
       label: "Total Tasks",
       value: stats.total,
-      color: "text-blue-600",
-      bgColor: "bg-blue-50",
+      color: "text-emerald-600 dark:text-emerald-400",
+      bgColor: "bg-emerald-50 dark:bg-emerald-900/30",
+      borderColor: "border-emerald-200 dark:border-emerald-700",
     },
     {
       icon: Circle,
       label: "Active Tasks",
       value: stats.active,
-      color: "text-orange-600",
-      bgColor: "bg-orange-50",
+      color: "text-amber-600 dark:text-amber-400",
+      bgColor: "bg-amber-50 dark:bg-amber-900/30",
+      borderColor: "border-amber-200 dark:border-amber-700",
     },
     {
       icon: CheckCircle,
       label: "Completed",
       value: stats.completed,
-      color: "text-green-600",
-      bgColor: "bg-green-50",
+      color: "text-green-600 dark:text-green-400",
+      bgColor: "bg-green-50 dark:bg-green-900/30",
+      borderColor: "border-green-200 dark:border-green-700",
     },
   ];
 
@@ -56,15 +59,15 @@ export function TodoStats() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: index * 0.1 }}
         >
-          <Card className="hover:shadow-md transition-shadow">
+          <Card className={`hover:shadow-lg transition-all duration-200 border-2 ${item.borderColor} hover:scale-105 bg-white/80 dark:bg-green-950/50 backdrop-blur-sm`}>
             <CardContent className="p-4">
               <div className="flex items-center space-x-3">
-                <div className={`p-2 rounded-lg ${item.bgColor}`}>
-                  <item.icon className={`w-5 h-5 ${item.color}`} />
+                <div className={`p-3 rounded-xl ${item.bgColor} border ${item.borderColor}`}>
+                  <item.icon className={`w-6 h-6 ${item.color}`} />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">{item.label}</p>
-                  <p className="text-2xl font-bold">{item.value}</p>
+                  <p className="text-sm text-green-700 dark:text-green-300 font-medium">{item.label}</p>
+                  <p className="text-2xl font-bold text-green-800 dark:text-green-200">{item.value}</p>
                 </div>
               </div>
             </CardContent>
